@@ -1,0 +1,25 @@
+# YAML
+id: app-youtube-comeen
+name: app.name
+description: app.description
+logo: fa-brands fa-youtube
+version: 0.2.0
+channel: stable
+api-level: 1
+color: red
+author:
+    name: Comeen
+    email: support@comeen.com
+modules:
+    - name: modules.player.name
+      logo: fa-brand fa-youtube
+      identifier: youtube-player
+      color: red
+      type: slide
+      description: modules.player.description
+      options:
+          vue:
+              component: src/YouTubePlayer/YouTubePlayer.ts
+              options: src/YouTubePlayer/YouTubePlayerOptions.ts
+          php:
+              handler: \Comeen\YouTube\YouTubePlayer\YouTubePlayerHandler

@@ -1,0 +1,23 @@
+{
+    "app": {
+        "name": "YouTube",
+        "description": "",
+        "author": {
+            "name": "Comeen",
+            "email": "support@comeen.com"
+        }
+    },
+    "modules": {
+        "player": {
+            "name": "Youtube video",
+            "description": "",
+            "options": {
+                "url": "YouTube video URL",
+                "url_placeholder": "https://www.youtube.com/watch?v=...",
+                "url_error": "YouTube URL is not valid",
+                "enable_cc": "Enable subtitles",
+                "disable_annotations": "Disable annotations"
+            }
+        }
+    }
+}
