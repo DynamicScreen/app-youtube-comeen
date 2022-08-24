@@ -20,14 +20,6 @@ export default class YouTubePlayerSlideModule extends SlideModule {
 
   // @ts-ignore
   setup(props, ctx) {
-    const en = require("/home/scleriot/Dev/dynamicscreen/app-server/storage/apps//app-youtube-comeen/0.2.0/languages/en.json");
-    const fr = require("/home/scleriot/Dev/dynamicscreen/app-server/storage/apps//app-youtube-comeen/0.2.0/languages/fr.json");
-    const translator: any = this.context.translator;
-    translator.addResourceBundle('en', 'youtube-player', en);
-    translator.addResourceBundle('fr', 'youtube-player', fr);
-    this.t = (key: string, namespace: string = 'youtube-player') => translator.t(key, { ns: namespace });
-
-
     const slide = reactive(props.slide) as IPublicSlide;
     this.context = reactive(props.slide.context);
 
