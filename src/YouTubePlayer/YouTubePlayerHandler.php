@@ -2,9 +2,9 @@
 
 namespace Comeen\YouTube\YouTubePlayer;
 
-use DynamicScreen\SdkPhp\Handlers\SlideHandler;
-use DynamicScreen\SdkPhp\Interfaces\ISlide;
-use DynamicScreen\SdkPhp\Interfaces\IDisplay;
+use ComeenPlay\SdkPhp\Handlers\SlideHandler;
+use ComeenPlay\SdkPhp\Interfaces\ISlide;
+use ComeenPlay\SdkPhp\Interfaces\IDisplay;
 
 class YouTubePlayerHandler extends SlideHandler
 {
