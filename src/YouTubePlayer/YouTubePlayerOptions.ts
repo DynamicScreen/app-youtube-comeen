@@ -1,7 +1,7 @@
 import {
   ISlideOptionsContext,
   SlideOptionsModule, VueInstance
-} from "dynamicscreen-sdk-js";
+} from "@comeen/comeen-play-sdk-js";
 
 export default class YouTubePlayerOptionsModule extends SlideOptionsModule {
   constructor(context: ISlideOptionsContext) {

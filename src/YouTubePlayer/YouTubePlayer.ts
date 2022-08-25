@@ -2,7 +2,7 @@ import {
   ISlideContext,
   IPublicSlide,
   SlideModule
-} from "dynamicscreen-sdk-js";
+} from "@comeen/comeen-play-sdk-js";
 
 import { onMounted, reactive, Ref, ref, VNode, nextTick } from 'vue';
 import { h } from "vue"
