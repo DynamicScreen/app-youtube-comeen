@@ -4,7 +4,7 @@ import {
   SlideModule
 } from "@comeen/comeen-play-sdk-js";
 
-import { onMounted, reactive, Ref, ref, VNode, nextTick } from 'vue';
+import { nextTick } from 'vue';
 import { h } from "vue"
 
 import YouTubePlayer from 'youtube-player'
@@ -19,7 +19,9 @@ export default class YouTubePlayerSlideModule extends SlideModule {
   };
 
   // @ts-ignore
-  setup(props, ctx) {
+  setup(props: Record<string, any>, vue: VueInstance, context: ISlideContext) {
+    const { h, reactive, ref } = vue;
+
     const slide = reactive(props.slide) as IPublicSlide;
     this.context = reactive(props.slide.context);
 
