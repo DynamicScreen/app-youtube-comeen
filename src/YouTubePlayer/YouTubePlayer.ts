@@ -47,21 +47,22 @@ export default class YouTubePlayerSlideModule extends SlideModule {
       player = YouTubePlayer('iframe', {
         height: '100%',
         width: '100%',
-        playerVars: playerVars
+        playerVars: playerVars,
       })
       let videoId = this.getVideoId(url.value)
       player.loadVideoById(videoId)
 
+      let firstTimeAutoplaying = true;
       player.on('stateChange', (event) => {
+        console.log("youtube", event.data)
         if (event.data === 0) {
           this.context.playbackManager.next();
         } else if (event.data === 3) {
-          // $this.bufferingTimeout = setTimeout(function () {
-          //   $this.$events.emit('checkInternet')
-          // }, 5000)
-        } else if (event.data === 1/* && $this.bufferingTimeout !== null*/) {
-          // clearTimeout($this.bufferingTimeout)
-          // $this.bufferingTimeout = null
+        } else if (event.data === 1) {
+          if (firstTimeAutoplaying) {
+            player.pauseVideo();
+            firstTimeAutoplaying = false;
+          }
         }
       })
       player.on('error', () => {
@@ -95,6 +96,7 @@ export default class YouTubePlayerSlideModule extends SlideModule {
     });
     this.context.onResume(async () => {
       console.log('Message: onResume')
+
       if(player) {
         player.playVideo();
       }
