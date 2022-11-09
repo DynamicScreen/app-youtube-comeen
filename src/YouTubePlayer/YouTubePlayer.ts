@@ -44,13 +44,14 @@ export default class YouTubePlayerSlideModule extends SlideModule {
         playerVars.cc_load_policy = 1
       }
 
-      player = YouTubePlayer('iframe', {
+      player = YouTubePlayer(`ytb-${slide.id}`, {
         height: '100%',
         width: '100%',
         playerVars: playerVars,
       })
       let videoId = this.getVideoId(url.value)
       player.loadVideoById(videoId)
+      console.log("youtube", player)
 
       let firstTimeAutoplaying = true;
       player.on('stateChange', (event) => {
@@ -66,6 +67,7 @@ export default class YouTubePlayerSlideModule extends SlideModule {
         }
       })
       player.on('error', () => {
+        console.log("youtube", "error")
         this.context.playbackManager.next();
       })
     }
@@ -82,7 +84,9 @@ export default class YouTubePlayerSlideModule extends SlideModule {
     });
 
     this.context.onPlay(async () => {
+      console.log("youtube", "play", player)
       if (player) {
+        console.log("playing");
         this.context.playbackManager.preventNextSlide(1000);
         player.playVideo();
       }
@@ -104,6 +108,7 @@ export default class YouTubePlayerSlideModule extends SlideModule {
 
     this.context.onEnded(async () => {
       if (player) {
+        console.log("youtube", "ending")
         player.stopVideo()
         player.destroy()
       }
@@ -114,7 +119,7 @@ export default class YouTubePlayerSlideModule extends SlideModule {
         class: "flex w-full h-full"
       }, [
         h('div', {
-          id: 'iframe'
+          id: `ytb-${slide.id}`
         })
       ])
   }
