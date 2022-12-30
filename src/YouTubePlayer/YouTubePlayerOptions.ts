@@ -13,11 +13,16 @@ export default class YouTubePlayerOptionsModule extends SlideOptionsModule {
   };
 
   setup(props: Record<string, any>, vue: VueInstance, context: ISlideOptionsContext) {
-    const { h } = vue;
+    const { h, computed, watchEffect } = vue;
 
     const update = context.update;
 
     const { Field, TextInput, Toggle } = this.context.components
+
+    context.updateAutoName(this.t("app.name"))
+
+    const valid = computed(() => update.option("url").modelValue?.length > 0)
+    watchEffect(() => context.updateValidationStatus(valid.value))
 
     return () =>
       h("div", {}, [
